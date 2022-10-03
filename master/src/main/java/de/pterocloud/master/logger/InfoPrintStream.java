@@ -12,7 +12,8 @@ public class InfoPrintStream extends TerminalPrintStream {
     }
 
     @Override
-    public void print(String s) {
-        log.info(s);
+    public void print(String msg) {
+        log.info(msg);
     }
+
 }
