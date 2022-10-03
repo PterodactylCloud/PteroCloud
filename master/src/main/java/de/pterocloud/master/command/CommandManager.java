@@ -1,6 +1,8 @@
 package de.pterocloud.master.command;
 
 import de.pterocloud.master.command.commands.DebugCommand;
+import de.pterocloud.master.command.commands.HelpCommand;
+import de.pterocloud.master.command.commands.TestCommand;
 import de.pterocloud.master.console.Console;
 import de.pterocloud.master.service.Service;
 import lombok.Getter;
@@ -23,6 +25,8 @@ public class CommandManager extends Service {
         listener = new Console(this);
         listener.init();
         registerCommand(new DebugCommand());
+        registerCommand(new HelpCommand());
+        registerCommand(new TestCommand());
     }
 
     public void registerCommand(Command command){
