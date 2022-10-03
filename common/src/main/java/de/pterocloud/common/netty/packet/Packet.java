@@ -5,23 +5,23 @@ import lombok.Getter;
 import java.io.Serializable;
 import java.util.UUID;
 
+@Getter
 public class Packet {
 
-    @Getter
     private final UUID packetID = UUID.randomUUID();
 
-    @Getter
     private final UUID sender;
 
-    @Getter
     private final UUID receiver;
 
-    @Getter
+    private final Byte identifier;
+
     private final Object payload;
 
-    public Packet(UUID sender, UUID receiver, Serializable payload) {
+    public Packet(UUID sender, UUID receiver, Byte identifier, Serializable payload) {
         this.sender = sender;
         this.receiver = receiver;
+        this.identifier = identifier;
         this.payload = payload;
     }
 

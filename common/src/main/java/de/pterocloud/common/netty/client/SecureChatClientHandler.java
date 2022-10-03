@@ -16,13 +16,13 @@ public class SecureChatClientHandler extends SimpleChannelInboundHandler<String>
 
     @Override
     public void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        client.getPacketListener().receivePacket(new Gson().fromJson(msg, Packet.class));
+        client.getPacketListener().onPacketReceive(new Gson().fromJson(msg, Packet.class));
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext channelHandlerContext, Throwable cause) {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         cause.printStackTrace();
-        channelHandlerContext.close();
+        ctx.close();
     }
 
 }

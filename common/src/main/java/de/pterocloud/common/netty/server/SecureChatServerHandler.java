@@ -1,5 +1,8 @@
 package de.pterocloud.common.netty.server;
 
+import com.google.gson.Gson;
+import de.pterocloud.common.netty.packet.Packet;
+import de.pterocloud.common.netty.packet.PacketListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
@@ -8,9 +11,20 @@ import io.netty.channel.SimpleChannelInboundHandler;
  */
 public class SecureChatServerHandler extends SimpleChannelInboundHandler<String> {
 
+
+    @Override
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+
+    }
+
+    @Override
+    public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+
+    }
+
     @Override
     public void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        ctx.writeAndFlush(msg);
+        //PacketListener.onPacketReceive(ctx, new Gson().fromJson(msg, Packet.class));
     }
 
     @Override

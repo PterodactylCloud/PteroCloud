@@ -15,22 +15,20 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.UUID;
-
 @Slf4j
+@Getter
 @RequiredArgsConstructor
 public final class ChatClient {
 
-    @Getter
-    private final UUID clientUUID;
+    //TODO: remove?
+//    private UUID clientID;
+//
+//    private UUID serverID;
 
-    @Getter
     private final String host;
 
-    @Getter
     private final int port;
 
-    @Getter
     private final PacketListener packetListener;
 
     private EventLoopGroup group;
@@ -54,11 +52,13 @@ public final class ChatClient {
         log.debug("Try to connect to server: {}:{}", host, port);
         channel = bootstrap.connect(host, port).sync().channel();
         log.info("Connected to server");
+
+
     }
 
     public void sendPacket(Packet packet) {
-        String msg = new Gson().toJson(packet);
-        channel.writeAndFlush(msg);
+        String serialized = new Gson().toJson(packet);
+        channel.writeAndFlush(serialized);
     }
 
     public void shutdown() {

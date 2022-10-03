@@ -1,9 +1,10 @@
 package de.pterocloud.master.command.commands;
 
-import de.pterocloud.common.netty.Main;
+import de.pterocloud.common.netty.client.ChatClient;
+import de.pterocloud.common.netty.server.ChatServer;
 import de.pterocloud.master.command.Command;
 import de.pterocloud.master.command.CommandSender;
-import de.pterocloud.master.console.TerminalAppender;
+import lombok.SneakyThrows;
 import org.jline.reader.Candidate;
 import org.jline.reader.ParsedLine;
 
@@ -31,9 +32,15 @@ public class TestCommand implements Command {
     }
 
     @Override
+    @SneakyThrows
     public Boolean run(String[] args, CommandSender sender) {
         sender.sendMessage("Testing netty...");
-        Main.main();
+        ChatServer chatServer = new ChatServer(3423);
+        chatServer.start();
+
+//        ChatClient client = new ChatClient("localhost", 3423, packet -> {
+//            sender.sendMessage("Received packet: " + packet.getPayload());
+//        });
         return true;
     }
 
