@@ -18,8 +18,10 @@ dependencies {
     api group: 'org.yaml', name: 'snakeyaml', version: '1.33'
     api group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
-    api group: 'io.netty', name: 'netty-all', version: '4.1.82.Final'
+    api group: 'io.netty', name: 'netty-all', version: '5.0.0.Alpha2'
     api group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.1'
+    api group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.46'
+    api 'org.bouncycastle:bcpkix-jdk18on:1.71.1'
 }
 
 test {

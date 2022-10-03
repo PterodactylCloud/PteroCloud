@@ -1,22 +1,13 @@
 package de.pterocloud.master.command.commands;
 
 import de.pterocloud.master.command.Command;
-import de.pterocloud.master.command.CommandManager;
 import de.pterocloud.master.command.CommandSender;
-import de.pterocloud.master.logger.Logger;
 import org.jline.reader.Candidate;
 import org.jline.reader.ParsedLine;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class HelpCommand implements Command {
-
-    public HelpCommand() {
-    }
-
-
     @Override
     public String getCommand() {
         return "help";
@@ -24,23 +15,23 @@ public class HelpCommand implements Command {
 
     @Override
     public String[] getAlias() {
-        return new String[]{"?"};
+        return new String[0];
     }
 
     @Override
     public String getDescription() {
-        return "Shows all available Commands";
+        return "help";
     }
 
     @Override
     public String getPermission() {
-        return null;
+        return "*";
     }
 
     @Override
     public Boolean run(String[] args, CommandSender sender) {
         sender.sendMessage("Help placeholder");
-        return null;
+        return true;
     }
 
     @Override
@@ -50,6 +41,6 @@ public class HelpCommand implements Command {
 
     @Override
     public List<Candidate> complete(ParsedLine line, List<Candidate> candidates) {
-        return null;
+        return candidates;
     }
 }
