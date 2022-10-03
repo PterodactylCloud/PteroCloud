@@ -35,8 +35,12 @@ public class TestCommand implements Command {
     @SneakyThrows
     public Boolean run(String[] args, CommandSender sender) {
         sender.sendMessage("Testing netty...");
-        ChatServer chatServer = new ChatServer(3423);
-        chatServer.start();
+        try {
+            ChatServer chatServer = new ChatServer(3423);
+            chatServer.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 //        ChatClient client = new ChatClient("localhost", 3423, packet -> {
 //            sender.sendMessage("Received packet: " + packet.getPayload());

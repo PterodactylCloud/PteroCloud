@@ -11,6 +11,10 @@ import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.SelfSignedCertificate;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
+import java.security.Provider;
+import java.security.Security;
 
 @Slf4j
 @AllArgsConstructor
@@ -20,12 +24,16 @@ public class ChatServer {
 
     public void start() throws Exception {
 
+
         log.debug("Creating certificate");
+        System.out.println("TEST");
         SelfSignedCertificate ssc = new SelfSignedCertificate();
         log.debug("Certificate created");
 
         log.debug("Creating SSL context");
+        System.out.println("TEST");
         SslContext sslCtx = SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey()).build();
+        System.out.println("TEST");
         log.debug("SSL context created");
 
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
