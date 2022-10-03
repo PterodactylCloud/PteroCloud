@@ -20,8 +20,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
     implementation group: 'org.jline', name: 'jline', version: '3.21.0'
-    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.1'
+    implementation group: 'org.jline', name: 'jline-terminal-jansi', version: '3.21.0'
     implementation group: 'org.fusesource.jansi', name: 'jansi', version: '2.4.0'
+    implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
 
     implementation project(":common")
 }

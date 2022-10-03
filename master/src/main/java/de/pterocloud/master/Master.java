@@ -4,13 +4,6 @@ import de.pterocloud.master.command.CommandManager;
 import de.pterocloud.master.logger.Logger;
 import de.pterocloud.master.service.ServiceProvider;
 import lombok.Getter;
-import org.jline.reader.Completer;
-import org.jline.reader.LineReader;
-import org.jline.reader.LineReaderBuilder;
-import org.jline.terminal.Terminal;
-
-import java.io.IOException;
-import java.nio.file.Path;
 
 public class Master {
 
@@ -24,6 +17,11 @@ public class Master {
         serviceProvider.addService(logger);
         CommandManager commandManager = new CommandManager();
         serviceProvider.addService(commandManager);
-
+        try {
+            commandManager.init();
+            commandManager.getListener().startListener();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -103,7 +103,7 @@ public class Console extends SubService {
             }
         }catch (Exception e){
             if (e instanceof UserInterruptException && !stop){
-                log.info("Stopping JaLuMuCloud (press ENTER to abort)");
+                log.info("Stopping PteroCloud (press ENTER to abort)");
                 timer = 5;
                 stop = true;
                 t.schedule(new TimerTask() {
