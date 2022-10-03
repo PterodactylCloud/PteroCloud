@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration debug="false">
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+    <conversionRule conversionWord="highlight" converterClass="de.pterocloud.master.console.ConsoleHighlighter" />
+    <appender name="File" fileName="logs/latest.txt" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/log-%d{yyyy-MM-dd-HH}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%-10d{HH:mm:ss} %-10level %-25t %-60logger{36} %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="Terminal" class="de.pterocloud.master.console.TerminalAppender">
+        <encoder>
+            <pattern>[%d{HH:mm:ss} %highlight(%-5level)] - %highlight(%msg)</pattern>
+        </encoder>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="Terminal" level="info"/>
+        <appender-ref ref="File"/>
+    </root>
+
+</Configuration>
