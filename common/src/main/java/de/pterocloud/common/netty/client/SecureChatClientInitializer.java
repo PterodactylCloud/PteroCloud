@@ -16,7 +16,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SecureChatClientInitializer extends ChannelInitializer<SocketChannel> {
 
-    private final SslContext sslCtx;
+    private final SslContext sslContext;
+
     private final ChatClient client;
 
     @Override
@@ -28,7 +29,7 @@ public class SecureChatClientInitializer extends ChannelInitializer<SocketChanne
         // and accept any invalid certificates in the client side.
         // You will need something more complicated to identify both
         // and server in the real world.
-        pipeline.addLast(sslCtx.newHandler(ch.alloc(), client.getHost(), client.getPort()));
+        pipeline.addLast(sslContext.newHandler(ch.alloc(), client.getHost(), client.getPort()));
 
 
         pipeline.addLast(new Base64Decoder());
@@ -39,4 +40,5 @@ public class SecureChatClientInitializer extends ChannelInitializer<SocketChanne
         // and then business logic.
         pipeline.addLast(new SecureChatClientHandler(client));
     }
+
 }

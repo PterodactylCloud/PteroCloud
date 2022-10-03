@@ -1,5 +1,6 @@
 package de.pterocloud.master.command.commands;
 
+import de.pterocloud.common.netty.Main;
 import de.pterocloud.master.command.Command;
 import de.pterocloud.master.command.CommandSender;
 import de.pterocloud.master.console.TerminalAppender;
@@ -31,7 +32,8 @@ public class TestCommand implements Command {
 
     @Override
     public Boolean run(String[] args, CommandSender sender) {
-        sender.sendMessage("Debug Log hidden");
+        sender.sendMessage("Testing netty...");
+        Main.main();
         return true;
     }
 

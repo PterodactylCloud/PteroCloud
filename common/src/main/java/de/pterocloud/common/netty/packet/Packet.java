@@ -9,16 +9,19 @@ public class Packet {
 
     @Getter
     private final UUID packetID = UUID.randomUUID();
+
     @Getter
     private final UUID sender;
+
     @Getter
-    private final UUID reciever;
+    private final UUID receiver;
+
     @Getter
     private final Object payload;
 
-    public Packet(UUID sender,UUID reciever, Serializable payload) {
+    public Packet(UUID sender, UUID receiver, Serializable payload) {
         this.sender = sender;
-        this.reciever = reciever;
+        this.receiver = receiver;
         this.payload = payload;
     }
 
