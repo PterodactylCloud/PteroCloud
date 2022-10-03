@@ -1,9 +1,6 @@
 package de.pterocloud.master.logger;
 
-
 import de.pterocloud.master.service.Service;
-import org.fusesource.jansi.Ansi;
-import org.fusesource.jansi.AnsiConsole;
 
 import java.io.PrintStream;
 
@@ -26,4 +23,5 @@ public class Logger extends Service {
         System.setOut(out);
         System.setErr(err);
     }
+
 }

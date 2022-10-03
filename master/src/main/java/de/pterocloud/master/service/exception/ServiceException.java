@@ -2,9 +2,9 @@ package de.pterocloud.master.service.exception;
 
 public class ServiceException extends Exception {
 
-    private String message;
+    private final String message;
 
-    public ServiceException(String message){
+    public ServiceException(String message) {
         this.message = message;
     }
 
@@ -12,4 +12,5 @@ public class ServiceException extends Exception {
     public String getMessage() {
         return message;
     }
+
 }

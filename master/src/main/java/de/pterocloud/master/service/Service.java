@@ -10,18 +10,18 @@ import java.util.Random;
 public abstract class Service {
 
     @Getter
-    private String internalServiceId;
+    private final String internalServiceId;
 
     @Getter
     @Setter
     private boolean isActive = false;
 
-
-    public Service(){
-       internalServiceId = this.getClass().getName() + "#" + new Random().nextInt(9999);
-   }
+    public Service() {
+        internalServiceId = this.getClass().getName() + "#" + new Random().nextInt(9999);
+    }
 
     public abstract void init() throws Exception;
+
     public abstract void shutdown() throws Exception;
 
 }
