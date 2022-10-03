@@ -1,0 +1,5 @@
+rootProject.name = 'PteroCloud'
+include 'Master'
+include 'Spigot'
+include 'Bungeecord'
+
