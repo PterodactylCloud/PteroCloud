@@ -115,7 +115,7 @@ public class Console extends SubService {
                         }
                         timer--;
                     }
-                },0,1000);
+                },0,1); // ToDo 1000
 
                 System.console().readLine();
 
