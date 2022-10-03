@@ -1,5 +1,9 @@
 package de.pterocloud.master;
 
+import de.pterocloud.master.command.CommandManager;
+import de.pterocloud.master.logger.Logger;
+import de.pterocloud.master.service.ServiceProvider;
+import lombok.Getter;
 import org.jline.reader.Completer;
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
@@ -10,14 +14,16 @@ import java.nio.file.Path;
 
 public class Master {
 
-    public static void inputReader(Path historyFile, Completer... completers)
-            throws IOException
-    {
-
-    }
-
+    @Getter
+    private static ServiceProvider serviceProvider;
 
     public static void main(String[] args) {
+        System.setProperty("org.jline.terminal.dumb", "true");
+        Logger logger = new Logger();
+        serviceProvider = new ServiceProvider();
+        serviceProvider.addService(logger);
+        CommandManager commandManager = new CommandManager();
+        serviceProvider.addService(commandManager);
 
     }
 }
