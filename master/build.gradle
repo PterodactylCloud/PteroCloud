@@ -11,6 +11,7 @@ application {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -23,6 +24,7 @@ dependencies {
     implementation group: 'org.jline', name: 'jline-terminal-jansi', version: '3.21.0'
     implementation group: 'org.fusesource.jansi', name: 'jansi', version: '2.4.0'
     implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+    implementation group: 'de.pterocloud', name: 'encryptedconnection', version: '1.0'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
 
     implementation project(":common")
