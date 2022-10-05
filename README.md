@@ -8,8 +8,9 @@
 
 ## Features
 
-- ...
-- ...
+## Current Limitations
+
+- Don't send any byte-arrays, only via base64 encoder encodeToSting
 
 <hr><br>
 
