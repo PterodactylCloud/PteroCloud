@@ -6,6 +6,7 @@ group 'de.pterocloud'
 version '1.0-SNAPSHOT'
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -20,8 +21,7 @@ dependencies {
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
     api group: 'io.netty', name: 'netty-all', version: '4.1.82.Final'
     api group: 'ch.qos.logback', name: 'logback-classic', version: '1.3.3'
-    api group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.46'
-    api 'org.bouncycastle:bcpkix-jdk15to18:1.71'
+    api group: 'de.pterocloud', name: 'encryptedconnection', version: '1.0'
 }
 
 test {
