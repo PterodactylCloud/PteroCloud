@@ -19,7 +19,6 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.22'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-
     implementation group: 'org.jline', name: 'jline', version: '3.21.0'
     implementation group: 'org.jline', name: 'jline-terminal-jansi', version: '3.21.0'
     implementation group: 'org.fusesource.jansi', name: 'jansi', version: '2.4.0'

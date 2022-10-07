@@ -1,5 +1,7 @@
 package de.pterocloud.master;
 
+import de.pterocloud.common.packet.Packet;
+import de.pterocloud.encryptedconnection.EncryptedServer;
 import de.pterocloud.master.command.CommandManager;
 import de.pterocloud.master.logger.Logger;
 import de.pterocloud.master.service.ServiceProvider;
@@ -23,5 +25,24 @@ public class Master {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try {
+            EncryptedServer encryptedServer = new EncryptedServer(5000);
+            encryptedServer.start();
+        } catch (Exception exception) {
+            throw new RuntimeException("Failed to Start Cloud-Master", exception);
+        }
+
+        Packet packet = new Packet();
+        packet.put("name", "jonas");
+        packet.put("age", 15);
+        packet.put("isCool", true);
+
+        String serialized = packet.serialize();
+        Packet deserialized = Packet.deserialize(serialized);
+        System.out.println(deserialized.get("name"));
+        System.out.println(deserialized.get("age"));
+        System.out.println(deserialized.get("isCool"));
     }
+
 }
