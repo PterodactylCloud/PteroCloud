@@ -5,7 +5,15 @@ import de.pterocloud.encryptedconnection.EncryptedClient;
 import de.pterocloud.encryptedconnection.EncryptedConnection;
 import lombok.Getter;
 
+import java.util.List;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.function.Consumer;
+
 public class ServiceManager {
+
+    @Getter
+    private static final ScheduledExecutorService executor = new ScheduledThreadPoolExecutor(3);
 
     @Getter
     private static final ServiceManager instance = new ServiceManager("localhost", 5000);
@@ -23,10 +31,6 @@ public class ServiceManager {
         }
     }
 
-    public void performQuery(String query) {
-
-    }
-
     public void sendPacket(Packet packet) {
         try {
             masterConnection.send(new de.pterocloud.encryptedconnection.Packet(packet.serialize()));
@@ -35,12 +39,34 @@ public class ServiceManager {
         }
     }
 
-    public void registerService(Service service) {
+    public void requestData(String key, String id, Consumer<Object> consumer) {
+        sendPacket(new Packet()
+                .put("type", "data-request")
+                .put("key", key)
+                .put("id", id));
+        executor.execute(() -> {
 
+        });
+    }
+
+    private List<String> requestServiceTags(String serviceId) {
+        sendPacket(new Packet()
+                .put("type", "service")
+                .put("id", serviceId)
+                .put("action", "get-tags"));
     }
 
     public ServiceImpl getService(String id) {
-        return null;
+        JSONO
+        return new ServiceImpl(id, "");
+    }
+
+    public void registerService(Service service) {
+        service.register();
+    }
+
+    public void unregisterService(Service service) {
+        service.unregister();
     }
 
 }

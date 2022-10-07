@@ -10,14 +10,17 @@ public class ServiceImpl extends Service {
 
     @Override
     public void onEnable() {
+        enable();
     }
 
     @Override
     public void onDisable() {
+        disable();
     }
 
     @Override
     public void onReload() {
+        reload();
     }
 
 }

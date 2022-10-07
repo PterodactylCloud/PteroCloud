@@ -8,14 +8,17 @@ public class SubServiceImpl extends SubService {
 
     @Override
     public void onEnable() {
+        enable();
     }
 
     @Override
     public void onDisable() {
+        disable();
     }
 
     @Override
     public void onReload() {
+        reload();
     }
 
 }
